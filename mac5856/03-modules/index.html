@@ -1,0 +1,227 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-bvzihdzo> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="Andrew Ijano" href="https://example.com/rss.xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css"><meta name="generator" content="Astro v5.4.1"><!-- Canonical URL --><link rel="canonical" href="https://example.com/mac5856/03-modules/"><!-- Primary Meta Tags --><title>[Tutorial] Build configuration and modules</title><meta name="title" content="[Tutorial] Build configuration and modules"><meta name="description" content="This is the report about the third tutorial for the Linux Kernel development: Introduction to Linux kernel build configuration and modules"><style>:root{--accent: #ccc;--accent-lighter: white;--background: #030303;--background-code: #24292e;--black: 15, 18, 25;--gray: 96, 115, 159;--gray-light: 229, 233, 240;--gray-dark: 34, 41, 57;--gray-gradient: rgba(var(--gray-light), 50%), #fff;--box-shadow: 0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%), 0 16px 32px rgba(var(--gray), 33%)}*{font-family:Hack,monospace;margin:0;padding:0}body{padding:1em 2em;text-align:left;word-wrap:break-word;overflow-wrap:break-word;color:var(--accent);background-color:var(--background);font-size:.93em;letter-spacing:-.02em;line-height:1.5;font-weight:400;text-rendering:"optimizeLegibility"}main{max-width:calc(100% - 2em);padding:2em 0}h1,h2,h3,h4,h5,h6{margin-top:2.5em;line-height:1.2;color:var(--accent-lighter);font-weight:bolder}.prose h1,h2,h3,h4,h5,h6{margin-bottom:-.6em}h1{font-size:1.2em}h2,h3,h4,h5,h6{font-size:1.1em}strong,b{font-weight:700}a{color:var(--accent);text-decoration:"underline"}a:hover{color:var(--accent-lighter)}.prose p{margin-top:1.6em;color:(--accent)}textarea{width:100%;font-size:16px}input{font-size:1em}table{width:100%}img{max-width:100%;height:auto;border-radius:8px}code{padding:2px 5px;border-radius:2px;font-size:.9em;background-color:var(--background-code);color:var(--accent-lighter)}pre{padding:1.5em;border-radius:8px;margin-top:.5em;margin-bottom:2em}pre>code{all:unset;font-size:.8em}blockquote{border-left:2px solid var(--accent);padding:0 0 0 20px;margin:2em 0}hr{border:none}ul{margin-top:.5em;margin-left:1em}ol{margin-top:.5em;margin-left:2em}li{margin:.5em 0}@media (min-width: 720px){body{font-size:1em;padding:1em 5em}main{padding:1em;width:720px}}.sr-only{border:0;padding:0;margin:0;position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px 1px 1px 1px);clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}a[data-astro-cid-eimmu3lg]{display:inline-block;color:var(--accent)}a[data-astro-cid-eimmu3lg]:hover{color:var(--accent-lighter)}.active[data-astro-cid-eimmu3lg]{font-weight:bolder;color:var(--accent-lighter)}header[data-astro-cid-3ef6ksr2]{margin:0;width:100%}h2[data-astro-cid-3ef6ksr2]{margin:0;font-size:1em}nav[data-astro-cid-3ef6ksr2]{display:flex;align-items:center;justify-content:space-between}nav[data-astro-cid-3ef6ksr2] div[data-astro-cid-3ef6ksr2]{display:flex;gap:1em}nav[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{border-bottom:2px solid transparent;text-decoration:none}.active[data-astro-cid-3ef6ksr2]{border-bottom:2px solid transparent;border-bottom-color:var(--accent)}.social-links[data-astro-cid-3ef6ksr2],.social-links[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{display:flex}.site-title[data-astro-cid-3ef6ksr2]{color:#fff}@media (max-width: 720px){.social-links[data-astro-cid-3ef6ksr2]{display:none}}
+footer[data-astro-cid-sz7xmlte]{padding:2em 1em 6em;color:var(--accent);font-size:.8em;text-align:center}.social-links[data-astro-cid-sz7xmlte]{display:flex;justify-content:center;gap:1em;margin-top:1em}.social-links[data-astro-cid-sz7xmlte] a[data-astro-cid-sz7xmlte]{text-decoration:none;color:rgb(var(--gray))}.social-links[data-astro-cid-sz7xmlte] a[data-astro-cid-sz7xmlte]:hover{color:rgb(var(--gray-dark))}body{display:flex;flex-direction:column;align-items:center}main[data-astro-cid-bvzihdzo]{max-width:100%;margin:0}.hero-image[data-astro-cid-bvzihdzo]{width:100%}.hero-image[data-astro-cid-bvzihdzo] img[data-astro-cid-bvzihdzo]{display:block;margin:0 auto;border-radius:12px;box-shadow:var(--box-shadow)}.prose[data-astro-cid-bvzihdzo]{margin:auto;color:var(--accent)}.title[data-astro-cid-bvzihdzo]{margin-bottom:1em;padding:1em 0;text-align:center;line-height:1}.title[data-astro-cid-bvzihdzo] h1[data-astro-cid-bvzihdzo]{margin:0 0 .5em;color:var(--accent-lighter)}.date[data-astro-cid-bvzihdzo]{margin-bottom:.5em;color:rgb(var(--accent))}.last-updated-on[data-astro-cid-bvzihdzo]{font-style:italic}@media (min-width: 680px){.prose[data-astro-cid-bvzihdzo]{width:680px;max-width:calc(100% - 2em)}}
+</style></head> <body data-astro-cid-bvzihdzo> <header data-astro-cid-3ef6ksr2> <nav data-astro-cid-3ef6ksr2> <a class="site-title" href="/" data-astro-cid-3ef6ksr2>Andrew Ijano</a> <div class="internal-links" data-astro-cid-3ef6ksr2> <a href="/" data-astro-cid-3ef6ksr2="true" data-astro-cid-eimmu3lg> /home </a>  <a href="/mac5856" class="active" data-astro-cid-3ef6ksr2="true" data-astro-cid-eimmu3lg> /mac5856 </a>  </div> </nav> </header>  <main data-astro-cid-bvzihdzo> <article data-astro-cid-bvzihdzo> <div class="prose" data-astro-cid-bvzihdzo> <div class="title" data-astro-cid-bvzihdzo> <div class="date" data-astro-cid-bvzihdzo> <time datetime="2025-03-19T03:00:00.000Z"> 2025-03-19 </time> </div> <h1 data-astro-cid-bvzihdzo>[Tutorial] Build configuration and modules</h1> <hr data-astro-cid-bvzihdzo> </div>  <p>This is the report about the third tutorial for the Linux Kernel development: <a href="https://flusp.ime.usp.br/kernel/modules-intro/">Introduction to Linux kernel build configuration and modules</a>.</p>
+<p>In this tutorial, I created test modules to explore how the process of build and configurating new modules to the Linux kernel works.</p>
+<h2 id="1-creating-a-simple-example-module">1. Creating a simple example module</h2>
+<p>First, I created the following module at <code>${IIO_TREE}/drivers/misc/simple_mod.c</code>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#F97583">#include</span><span style="color:#9ECBFF"> &#x3C;linux/module.h></span></span>
+<span class="line"><span style="color:#F97583">#include</span><span style="color:#9ECBFF"> &#x3C;linux/init.h></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">static</span><span style="color:#F97583"> int</span><span style="color:#E1E4E8"> __init </span><span style="color:#B392F0">simple_mod_init</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">void</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">	pr_info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Hello world</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">	return</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">static</span><span style="color:#F97583"> void</span><span style="color:#E1E4E8"> __exit </span><span style="color:#B392F0">simple_mod_exit</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">void</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">	pr_info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Goodbye world</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">module_init</span><span style="color:#E1E4E8">(simple_mod_init);</span></span>
+<span class="line"><span style="color:#B392F0">module_exit</span><span style="color:#E1E4E8">(simple_mod_exit);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">MODULE_LICENSE</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"GPL"</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>This module will log messages when it’s installed and uninstalled.</p>
+<h2 id="2-creating-linux-kernel-configuration-symbols">2. Creating Linux kernel configuration symbols</h2>
+<p>After that, I added a configuration symbol and an entry in the Makefile.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># ${IIO_TREE}/drivers/misc/Kconfig</span></span>
+<span class="line"><span>config SIMPLE_MOD</span></span>
+<span class="line"><span>	tristate "Simple example Linux kernel module"</span></span>
+<span class="line"><span>	default	n</span></span>
+<span class="line"><span>	help</span></span>
+<span class="line"><span>	  This option enables a simple module that says hello upon load and</span></span>
+<span class="line"><span>	  bye on unloading.</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="makefile"><code><span class="line"><span style="color:#6A737D"># ${IIO_TREE}/drivers/misc/Makefile</span></span>
+<span class="line"><span style="color:#E1E4E8">obj-</span><span style="color:#9ECBFF">$(</span><span style="color:#E1E4E8">CONFIG_SIMPLE_MOD</span><span style="color:#9ECBFF">)</span><span style="color:#E1E4E8">		+= simple_mod.o</span></span></code></pre>
+<h2 id="3-configuring-the-linux-kernel-build-with-menuconfig">3. Configuring the Linux kernel build with menuconfig</h2>
+<p>With the configuration symbols created, I needed to enable the module in the menuconfig (<code>make menuconfig</code> in the iio directory).</p>
+<p>Then, in the same directory, I cleaned artifacts and built the image and modules again. This compilation took almost 20 minutes to finish!</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">make</span><span style="color:#79B8FF"> -j$(</span><span style="color:#B392F0">nproc</span><span style="color:#79B8FF">)</span><span style="color:#9ECBFF"> clean</span></span>
+<span class="line"><span style="color:#B392F0">make</span><span style="color:#79B8FF"> -j$(</span><span style="color:#B392F0">nproc</span><span style="color:#79B8FF">)</span><span style="color:#9ECBFF"> Image.gz</span><span style="color:#9ECBFF"> modules</span></span></code></pre>
+<p>After that, it was just a matter of mounting the vm with the new image and connecting it with ssh.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> guestmount</span><span style="color:#79B8FF"> --rw</span><span style="color:#79B8FF"> --add</span><span style="color:#9ECBFF"> "${</span><span style="color:#E1E4E8">VM_DIR</span><span style="color:#9ECBFF">}/arm64_img.qcow2"</span><span style="color:#79B8FF"> --mount</span><span style="color:#9ECBFF"> /dev/sda2</span><span style="color:#9ECBFF"> "${</span><span style="color:#E1E4E8">VM_MOUNT_POINT</span><span style="color:#9ECBFF">}"</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#79B8FF"> --preserve-env</span><span style="color:#9ECBFF"> make</span><span style="color:#79B8FF"> -C</span><span style="color:#9ECBFF"> "${</span><span style="color:#E1E4E8">IIO_TREE</span><span style="color:#9ECBFF">}"</span><span style="color:#9ECBFF"> modules_install</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> guestunmount</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$VM_MOUNT_POINT</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> virsh</span><span style="color:#9ECBFF"> start</span><span style="color:#9ECBFF"> arm64</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> virsh</span><span style="color:#9ECBFF"> start</span><span style="color:#9ECBFF"> arm64</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> virsh</span><span style="color:#9ECBFF"> net-dhcp-leases</span><span style="color:#9ECBFF"> default</span></span>
+<span class="line"><span style="color:#B392F0">ssh</span><span style="color:#9ECBFF"> root@192.168.122.45</span><span style="color:#6A737D"> # that's the IP from the previous command</span></span></code></pre>
+<p>By verifying the kernel version inside the VM, we can see it’s correct.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#6A737D"># @VM</span></span>
+<span class="line"><span style="color:#B392F0">root@localhost:~#</span><span style="color:#9ECBFF"> uname</span><span style="color:#79B8FF"> --all</span></span>
+<span class="line"><span style="color:#B392F0">Linux</span><span style="color:#9ECBFF"> localhost</span><span style="color:#9ECBFF"> 6.14.0-rc1-turing+</span><span style="color:#6A737D"> #2 SMP PREEMPT Wed Mar 19 17:19:10 -03 2025 aarch64 GNU/Linux</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">root@localhost:~#</span><span style="color:#9ECBFF"> cat</span><span style="color:#9ECBFF"> /proc/version</span></span>
+<span class="line"><span style="color:#B392F0">Linux</span><span style="color:#9ECBFF"> version</span><span style="color:#9ECBFF"> 6.14.0-rc1-turing+</span><span style="color:#E1E4E8"> (andrew@delta4) (</span><span style="color:#B392F0">aarch64-linux-gnu-gcc</span><span style="color:#E1E4E8"> (GCC) 14.2.0, GNU ld (</span><span style="color:#B392F0">GNU</span><span style="color:#9ECBFF"> Binutils</span><span style="color:#E1E4E8">) 2.43) </span><span style="color:#6A737D">#2 SMP PREEMPT Wed Mar 19 17:19:10 -03 2025</span></span>
+<span class="line"></span></code></pre>
+<blockquote>
+<p>During this process, I had the following problem.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>error: failed to connect to the hypervisor</span></span>
+<span class="line"><span>error: Operation not supported: Cannot use direct socket > mode if no URI is set. For more information see</span></span>
+<span class="line"><span>https://libvirt.org/kbase/failed_connection_after_install.?html</span></span></code></pre>
+<p>At first, I struggled a little to understand what was wrong but then I remembered we had to start the libvirtd service in the first tutorial and it was probably down in this moment, since I restarted my machine. By running <code>sudo systemctl start libvirtd</code> and <code>sudo virsh net-start default</code> again it was solved.</p>
+</blockquote>
+<h2 id="4-installing-linux-kernel-modules">4. Installing Linux kernel modules</h2>
+<p>In this part, I tested how we could install and uninstall kernel modules.</p>
+<p>First I checked information about my new test module with <code>modinfo</code>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>root@localhost:~# modinfo simple_mod</span></span>
+<span class="line"><span>filename:       /lib/modules/6.14.0-rc1-turing+/kernel/drivers/misc/simple_mod.ko</span></span>
+<span class="line"><span>license:        GPL</span></span>
+<span class="line"><span>depends:</span></span>
+<span class="line"><span>intree:         Y</span></span>
+<span class="line"><span>name:           simple_mod</span></span>
+<span class="line"><span>vermagic:       6.14.0-rc1-turing+ SMP preempt mod_unload aarch64</span></span></code></pre>
+<p>Then, I ensured my module wasn’t installed by listing installed modules with <code>lsmod</code>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>root@localhost:~# lsmod</span></span>
+<span class="line"><span>Module                  Size  Used by</span></span>
+<span class="line"><span>cfg80211              421888  0</span></span>
+<span class="line"><span>rfkill                 28672  2 cfg80211</span></span>
+<span class="line"><span>fuse                  155648  1</span></span>
+<span class="line"><span>drm                   544768  0</span></span>
+<span class="line"><span>dm_mod                131072  0</span></span>
+<span class="line"><span>ip_tables              28672  0</span></span>
+<span class="line"><span>x_tables               36864  1 ip_tables</span></span></code></pre>
+<p>By installing the module with <code>insmod</code> and checking the kernel log messages, we can see that our <code>Hello World</code> message is prompted.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>root@localhost:~# dmesg | tail</span></span>
+<span class="line"><span>[   43.136175 ] systemd[1]: Started systemd-udevd.service - Rule-based Manager for Device Events and Files.</span></span>
+<span class="line"><span>[   43.422468 ] systemd[1]: Starting systemd-networkd.service - Network Configuration...</span></span>
+<span class="line"><span>[   46.219553 ] cfg80211: Loading compiled-in X.509 certificates for regulatory database</span></span>
+<span class="line"><span>[   46.519529 ] systemd[1]: Started systemd-journald.service - Journal Service.</span></span>
+<span class="line"><span>[   46.829940 ] Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'</span></span>
+<span class="line"><span>[   46.844600 ] Loaded X.509 cert 'wens: 61c038651aabdcf94bd0ac7ff06c7248db18c600'</span></span>
+<span class="line"><span>[   46.848407 ] platform regulatory.0: Direct firmware load for regulatory.db failed with error -2</span></span>
+<span class="line"><span>[   46.849451 ] cfg80211: failed to load regulatory.db</span></span>
+<span class="line"><span>[   47.594712 ] systemd-journald[156]: Received client request to flush runtime journal.</span></span>
+<span class="line"><span>[  669.534683 ] Hello world</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>The same happens when we remove the module with <code>rmmod</code>, we can see the message <code>Goodbye world</code>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>root@localhost:~# dmesg | tail</span></span>
+<span class="line"><span>[   43.422468 ] systemd[1]: Starting systemd-networkd.service - Network Configuration...</span></span>
+<span class="line"><span>[   46.219553 ] cfg80211: Loading compiled-in X.509 certificates for regulatory database</span></span>
+<span class="line"><span>[   46.519529 ] systemd[1]: Started systemd-journald.service - Journal Service.</span></span>
+<span class="line"><span>[   46.829940 ] Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'</span></span>
+<span class="line"><span>[   46.844600 ] Loaded X.509 cert 'wens: 61c038651aabdcf94bd0ac7ff06c7248db18c600'</span></span>
+<span class="line"><span>[   46.848407 ] platform regulatory.0: Direct firmware load for regulatory.db failed with error -2</span></span>
+<span class="line"><span>[   46.849451 ] cfg80211: failed to load regulatory.db</span></span>
+<span class="line"><span>[   47.594712 ] systemd-journald[156]: Received client request to flush runtime journal.</span></span>
+<span class="line"><span>[  669.534683 ] Hello world</span></span>
+<span class="line"><span>[  852.658073 ] Goodbye world</span></span></code></pre>
+<p>Alternatively, using <code>modprobe</code> worked exactly the same. Although <code>modprobe</code> seemed easier to use.</p>
+<blockquote>
+<p>Interesting fact: I was questioning the difference between both programs. By running <code>man insmod</code> we can see that <code>modprobe</code> should be the prefered one:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>DESCRIPTION</span></span>
+<span class="line"><span>insmod is a trivial program to insert a module into the kernel.</span></span>
+<span class="line"><span>Most users will want to use modprobe(8) instead, which is more</span></span>
+<span class="line"><span>clever and can handle module dependencies.</span></span></code></pre>
+</blockquote>
+<h2 id="5-dependencies-between-kernel-features">5. Dependencies between kernel features</h2>
+<p>Here I changed my example module to have the following code.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#F97583">#include</span><span style="color:#9ECBFF"> &#x3C;linux/module.h></span></span>
+<span class="line"><span style="color:#F97583">#include</span><span style="color:#9ECBFF"> &#x3C;linux/init.h></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">void</span><span style="color:#B392F0"> simple_mod_func</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">void</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">void</span><span style="color:#B392F0"> simple_mod_func</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">void</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">    pr_info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Called </span><span style="color:#79B8FF">%s</span><span style="color:#9ECBFF">, </span><span style="color:#79B8FF">%s</span><span style="color:#9ECBFF"> function</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, KBUILD_MODNAME, __func__);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#B392F0">EXPORT_SYMBOL_NS_GPL</span><span style="color:#E1E4E8">(simple_mod_func, </span><span style="color:#9ECBFF">"IIO_WORKSHOP_SIMPLE_MOD"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">static</span><span style="color:#F97583"> int</span><span style="color:#E1E4E8"> __init </span><span style="color:#B392F0">simple_mod_init</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">void</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">    pr_info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Hello from </span><span style="color:#79B8FF">%s</span><span style="color:#9ECBFF"> module</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, KBUILD_MODNAME);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">static</span><span style="color:#F97583"> void</span><span style="color:#E1E4E8"> __exit </span><span style="color:#B392F0">simple_mod_exit</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">void</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">    pr_info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Goodbye from </span><span style="color:#79B8FF">%s</span><span style="color:#9ECBFF"> module</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, KBUILD_MODNAME);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">module_init</span><span style="color:#E1E4E8">(simple_mod_init);</span></span>
+<span class="line"><span style="color:#B392F0">module_exit</span><span style="color:#E1E4E8">(simple_mod_exit);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">MODULE_LICENSE</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"GPL"</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>I rebuilt this module, copied it to the VM and installed/uninstalled the module.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#6A737D"># @HOST</span></span>
+<span class="line"><span style="color:#B392F0">make</span><span style="color:#79B8FF"> -C</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$IIO_TREE</span><span style="color:#9ECBFF">"</span><span style="color:#9ECBFF"> M="${</span><span style="color:#E1E4E8">IIO_TREE</span><span style="color:#9ECBFF">}/drivers/misc/"</span></span>
+<span class="line"><span style="color:#B392F0">scp</span><span style="color:#9ECBFF"> "${</span><span style="color:#E1E4E8">IIO_TREE</span><span style="color:#9ECBFF">}/drivers/misc/simple_mod.ko"</span><span style="color:#9ECBFF"> root@</span><span style="color:#F97583">&#x3C;</span><span style="color:#9ECBFF">VM-IP-addres</span><span style="color:#E1E4E8">s</span><span style="color:#F97583">></span><span style="color:#9ECBFF">:~/</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># @VM</span></span>
+<span class="line"><span style="color:#B392F0">cp</span><span style="color:#9ECBFF"> simple_mod.ko</span><span style="color:#9ECBFF"> /lib/modules/`</span><span style="color:#B392F0">uname</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF">`</span><span style="color:#B392F0">/kernel/drivers/misc/</span></span>
+<span class="line"><span style="color:#B392F0">depmod</span><span style="color:#79B8FF"> --quick</span></span>
+<span class="line"><span style="color:#B392F0">modprobe</span><span style="color:#9ECBFF"> simple_mod</span></span>
+<span class="line"><span style="color:#B392F0">modprobe</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> simple_mod</span></span></code></pre>
+<p>The new <code>depmod</code> command with the <code>--quick</code> option seems to  “create a list of module dependencies” and “scan to see if any modules are newer than the modules.dep file before any work is done: if not, it silently exits rather than regenerating the files”, as described in its man page.</p>
+<p>The result of this is the following.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>root@localhost:~# dmesg | tail</span></span>
+<span class="line"><span>[   46.848407 ] platform regulatory.0: Direct firmware load for regulatory.db failed with error -2</span></span>
+<span class="line"><span>[   46.849451 ] cfg80211: failed to load regulatory.db</span></span>
+<span class="line"><span>[   47.594712 ] systemd-journald[156]: Received client request to flush runtime journal.</span></span>
+<span class="line"><span>[  669.534683 ] Hello world</span></span>
+<span class="line"><span>[  852.658073 ] Goodbye world</span></span>
+<span class="line"><span>[ 1041.745540 ] Hello world</span></span>
+<span class="line"><span>[ 1053.804522 ] Goodbye world</span></span>
+<span class="line"><span>[ 3916.784470 ] simple_mod: loading out-of-tree module taints kernel.</span></span>
+<span class="line"><span>[ 3916.786524 ] Hello from simple_mod module</span></span>
+<span class="line"><span>[ 3923.974343 ] Goodbye from simple_mod module</span></span></code></pre>
+<p>In this next part, I added a new module <code>simple_mod_part.c</code> that will depend on the first one:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#F97583">#include</span><span style="color:#9ECBFF"> &#x3C;linux/module.h></span></span>
+<span class="line"><span style="color:#F97583">#include</span><span style="color:#9ECBFF"> &#x3C;linux/init.h></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">extern</span><span style="color:#F97583"> void</span><span style="color:#B392F0"> simple_mod_func</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">void</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">static</span><span style="color:#F97583"> int</span><span style="color:#E1E4E8"> __init </span><span style="color:#B392F0">simple_mod_part_init</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">void</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">    pr_info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Hello from </span><span style="color:#79B8FF">%s</span><span style="color:#9ECBFF"> module</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, KBUILD_MODNAME);</span></span>
+<span class="line"><span style="color:#B392F0">    simple_mod_func</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">static</span><span style="color:#F97583"> void</span><span style="color:#E1E4E8"> __exit </span><span style="color:#B392F0">simple_mod_part_exit</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">void</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">    pr_info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Goodbye from </span><span style="color:#79B8FF">%s</span><span style="color:#9ECBFF"> module</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, KBUILD_MODNAME);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">module_init</span><span style="color:#E1E4E8">(simple_mod_part_init);</span></span>
+<span class="line"><span style="color:#B392F0">module_exit</span><span style="color:#E1E4E8">(simple_mod_part_exit);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">MODULE_LICENSE</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"GPL"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">MODULE_IMPORT_NS</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"IIO_WORKSHOP_SIMPLE_MOD"</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>Then I added the following entries to <code>Kconfig</code> and <code>Makefile</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># iio/drivers/misc/Kconfig</span></span>
+<span class="line"><span>config SIMPLE_MOD_PART</span></span>
+<span class="line"><span>        tristate "Simple test partner module"</span></span>
+<span class="line"><span>        depends on SIMPLE_MOD</span></span>
+<span class="line"><span>        help</span></span>
+<span class="line"><span>            Enable this configuration option to enable the simple test pattern</span></span>
+<span class="line"><span>            module.</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#6A737D"># iio/drivers/misc/Makefile</span></span>
+<span class="line"><span style="color:#B392F0">obj-$(CONFIG_SIMPLE_MOD_PART</span><span style="color:#E1E4E8">) += simple_mod_part.o</span></span></code></pre>
+<p>And after that, I just enabled the module with <code>make menuconfig</code> and built the modules, copying it to the vm, with:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">make</span><span style="color:#79B8FF"> -C</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$IIO_TREE</span><span style="color:#9ECBFF">"</span><span style="color:#9ECBFF"> modules_prepare</span></span>
+<span class="line"><span style="color:#B392F0">make</span><span style="color:#79B8FF"> -C</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$IIO_TREE</span><span style="color:#9ECBFF">"</span><span style="color:#9ECBFF"> M=drivers/misc/</span></span>
+<span class="line"><span style="color:#B392F0">scp</span><span style="color:#9ECBFF"> "${</span><span style="color:#E1E4E8">IIO_TREE</span><span style="color:#9ECBFF">}/drivers/misc/simple_mod_part.ko"</span><span style="color:#9ECBFF"> root@</span><span style="color:#F97583">&#x3C;</span><span style="color:#9ECBFF">VM-IP-addres</span><span style="color:#E1E4E8">s</span><span style="color:#F97583">></span><span style="color:#9ECBFF">:~/</span></span></code></pre>
+<p>Inside the VM, we can copy and load the new module:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">cp</span><span style="color:#9ECBFF"> simple_mod_part.ko</span><span style="color:#9ECBFF"> /lib/modules/`</span><span style="color:#B392F0">uname</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF">`</span><span style="color:#B392F0">/kernel/drivers/misc/</span></span>
+<span class="line"><span style="color:#B392F0">depmod</span><span style="color:#79B8FF"> --quick</span></span>
+<span class="line"><span style="color:#B392F0">modinfo</span><span style="color:#9ECBFF"> simple_mod_part</span></span>
+<span class="line"><span style="color:#B392F0">modprobe</span><span style="color:#9ECBFF"> simple_mod_part</span></span>
+<span class="line"><span style="color:#B392F0">modprobe</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> simple_mod_part</span></span>
+<span class="line"><span style="color:#B392F0">dmesg</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> tail</span></span></code></pre>
+<p>This was the result.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>root@localhost:~# dmesg | tail</span></span>
+<span class="line"><span>[ 1041.745540 ] Hello world</span></span>
+<span class="line"><span>[ 1053.804522 ] Goodbye world</span></span>
+<span class="line"><span>[ 3916.784470 ] simple_mod: loading out-of-tree module taints kernel.</span></span>
+<span class="line"><span>[ 3916.786524 ] Hello from simple_mod module</span></span>
+<span class="line"><span>[ 3923.974343 ] Goodbye from simple_mod module</span></span>
+<span class="line"><span>[ 5180.974985 ] Hello from simple_mod module</span></span>
+<span class="line"><span>[ 5180.979421 ] Hello from simple_mod_part module</span></span>
+<span class="line"><span>[ 5180.979778 ] Called simple_mod, simple_mod_func function</span></span>
+<span class="line"><span>[ 5191.205356 ] Goodbye from simple_mod_part module</span></span>
+<span class="line"><span>[ 5191.217908 ] Goodbye from simple_mod module</span></span></code></pre>
+<p>We can see that <code>simple_mod</code> was automatically loaded. That’s probably one difference between <code>insmod</code> and <code>modprobe</code>.</p>  </div> </article> </main> <footer data-astro-cid-sz7xmlte> <a href="https://andrewijano.github.io" data-astro-cid-sz7xmlte>andrewijano.github.io</a> &copy; 2025 by Andrew Ijano is licensed under <a href="https://creativecommons.org/licenses/by/4.0/" data-astro-cid-sz7xmlte>CC BY 4.0</a>.
+</footer>  </body></html>

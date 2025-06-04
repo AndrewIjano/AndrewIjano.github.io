@@ -1,0 +1,211 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-bvzihdzo> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="Andrew Ijano" href="https://example.com/rss.xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css"><meta name="generator" content="Astro v5.4.1"><!-- Canonical URL --><link rel="canonical" href="https://example.com/mac5856/04-character-drivers/"><!-- Primary Meta Tags --><title>[Tutorial] Character Drivers</title><meta name="title" content="[Tutorial] Character Drivers"><meta name="description" content="This is the report about the fourth tutorial for the Linux Kernel development: Setting up a test environment for Linux Kernel Dev using QEMU and libvirt"><style>:root{--accent: #ccc;--accent-lighter: white;--background: #030303;--background-code: #24292e;--black: 15, 18, 25;--gray: 96, 115, 159;--gray-light: 229, 233, 240;--gray-dark: 34, 41, 57;--gray-gradient: rgba(var(--gray-light), 50%), #fff;--box-shadow: 0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%), 0 16px 32px rgba(var(--gray), 33%)}*{font-family:Hack,monospace;margin:0;padding:0}body{padding:1em 2em;text-align:left;word-wrap:break-word;overflow-wrap:break-word;color:var(--accent);background-color:var(--background);font-size:.93em;letter-spacing:-.02em;line-height:1.5;font-weight:400;text-rendering:"optimizeLegibility"}main{max-width:calc(100% - 2em);padding:2em 0}h1,h2,h3,h4,h5,h6{margin-top:2.5em;line-height:1.2;color:var(--accent-lighter);font-weight:bolder}.prose h1,h2,h3,h4,h5,h6{margin-bottom:-.6em}h1{font-size:1.2em}h2,h3,h4,h5,h6{font-size:1.1em}strong,b{font-weight:700}a{color:var(--accent);text-decoration:"underline"}a:hover{color:var(--accent-lighter)}.prose p{margin-top:1.6em;color:(--accent)}textarea{width:100%;font-size:16px}input{font-size:1em}table{width:100%}img{max-width:100%;height:auto;border-radius:8px}code{padding:2px 5px;border-radius:2px;font-size:.9em;background-color:var(--background-code);color:var(--accent-lighter)}pre{padding:1.5em;border-radius:8px;margin-top:.5em;margin-bottom:2em}pre>code{all:unset;font-size:.8em}blockquote{border-left:2px solid var(--accent);padding:0 0 0 20px;margin:2em 0}hr{border:none}ul{margin-top:.5em;margin-left:1em}ol{margin-top:.5em;margin-left:2em}li{margin:.5em 0}@media (min-width: 720px){body{font-size:1em;padding:1em 5em}main{padding:1em;width:720px}}.sr-only{border:0;padding:0;margin:0;position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px 1px 1px 1px);clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}a[data-astro-cid-eimmu3lg]{display:inline-block;color:var(--accent)}a[data-astro-cid-eimmu3lg]:hover{color:var(--accent-lighter)}.active[data-astro-cid-eimmu3lg]{font-weight:bolder;color:var(--accent-lighter)}header[data-astro-cid-3ef6ksr2]{margin:0;width:100%}h2[data-astro-cid-3ef6ksr2]{margin:0;font-size:1em}nav[data-astro-cid-3ef6ksr2]{display:flex;align-items:center;justify-content:space-between}nav[data-astro-cid-3ef6ksr2] div[data-astro-cid-3ef6ksr2]{display:flex;gap:1em}nav[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{border-bottom:2px solid transparent;text-decoration:none}.active[data-astro-cid-3ef6ksr2]{border-bottom:2px solid transparent;border-bottom-color:var(--accent)}.social-links[data-astro-cid-3ef6ksr2],.social-links[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{display:flex}.site-title[data-astro-cid-3ef6ksr2]{color:#fff}@media (max-width: 720px){.social-links[data-astro-cid-3ef6ksr2]{display:none}}
+footer[data-astro-cid-sz7xmlte]{padding:2em 1em 6em;color:var(--accent);font-size:.8em;text-align:center}.social-links[data-astro-cid-sz7xmlte]{display:flex;justify-content:center;gap:1em;margin-top:1em}.social-links[data-astro-cid-sz7xmlte] a[data-astro-cid-sz7xmlte]{text-decoration:none;color:rgb(var(--gray))}.social-links[data-astro-cid-sz7xmlte] a[data-astro-cid-sz7xmlte]:hover{color:rgb(var(--gray-dark))}body{display:flex;flex-direction:column;align-items:center}main[data-astro-cid-bvzihdzo]{max-width:100%;margin:0}.hero-image[data-astro-cid-bvzihdzo]{width:100%}.hero-image[data-astro-cid-bvzihdzo] img[data-astro-cid-bvzihdzo]{display:block;margin:0 auto;border-radius:12px;box-shadow:var(--box-shadow)}.prose[data-astro-cid-bvzihdzo]{margin:auto;color:var(--accent)}.title[data-astro-cid-bvzihdzo]{margin-bottom:1em;padding:1em 0;text-align:center;line-height:1}.title[data-astro-cid-bvzihdzo] h1[data-astro-cid-bvzihdzo]{margin:0 0 .5em;color:var(--accent-lighter)}.date[data-astro-cid-bvzihdzo]{margin-bottom:.5em;color:rgb(var(--accent))}.last-updated-on[data-astro-cid-bvzihdzo]{font-style:italic}@media (min-width: 680px){.prose[data-astro-cid-bvzihdzo]{width:680px;max-width:calc(100% - 2em)}}
+</style></head> <body data-astro-cid-bvzihdzo> <header data-astro-cid-3ef6ksr2> <nav data-astro-cid-3ef6ksr2> <a class="site-title" href="/" data-astro-cid-3ef6ksr2>Andrew Ijano</a> <div class="internal-links" data-astro-cid-3ef6ksr2> <a href="/" data-astro-cid-3ef6ksr2="true" data-astro-cid-eimmu3lg> /home </a>  <a href="/mac5856" class="active" data-astro-cid-3ef6ksr2="true" data-astro-cid-eimmu3lg> /mac5856 </a>  </div> </nav> </header>  <main data-astro-cid-bvzihdzo> <article data-astro-cid-bvzihdzo> <div class="prose" data-astro-cid-bvzihdzo> <div class="title" data-astro-cid-bvzihdzo> <div class="date" data-astro-cid-bvzihdzo> <time datetime="2025-03-26T03:00:00.000Z"> 2025-03-26 </time> </div> <h1 data-astro-cid-bvzihdzo>[Tutorial] Character Drivers</h1> <hr data-astro-cid-bvzihdzo> </div>  <p>This is the report about the fourth tutorial for the Linux Kernel development: <a href="https://flusp.ime.usp.br/kernel/qemu-libvirt-setup/">Setting up a test environment for Linux Kernel Dev using QEMU and libvirt</a>. The tutorial provides an incredible introduction about character devices in the Linux kernel.</p>
+<h2 id="a-character-device-driver-example">A character device driver example</h2>
+<p>To learn more about character devices, I started creating a simple character device example at <code>${IIO_TREE}/drivers/char/simple_char.c</code>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#F97583">#include</span><span style="color:#9ECBFF"> &#x3C;linux/init.h></span></span>
+<span class="line"><span style="color:#F97583">#include</span><span style="color:#9ECBFF"> &#x3C;linux/module.h></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">#include</span><span style="color:#9ECBFF"> &#x3C;linux/kdev_t.h></span><span style="color:#6A737D"> /* for MAJOR */</span></span>
+<span class="line"><span style="color:#F97583">#include</span><span style="color:#9ECBFF"> &#x3C;linux/cdev.h></span><span style="color:#6A737D"> /* for cdev */</span></span>
+<span class="line"><span style="color:#F97583">#include</span><span style="color:#9ECBFF"> &#x3C;linux/fs.h></span><span style="color:#6A737D"> /* for chrdev functions */</span></span>
+<span class="line"><span style="color:#F97583">#include</span><span style="color:#9ECBFF"> &#x3C;linux/slab.h></span><span style="color:#6A737D"> /* for malloc */</span></span>
+<span class="line"><span style="color:#F97583">#include</span><span style="color:#9ECBFF"> &#x3C;linux/string.h></span><span style="color:#6A737D"> /* for strlen() */</span></span>
+<span class="line"><span style="color:#F97583">#include</span><span style="color:#9ECBFF"> &#x3C;linux/uaccess.h></span><span style="color:#6A737D"> /* copy_to_user() */</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">struct</span><span style="color:#E1E4E8"> cdev </span><span style="color:#F97583">*</span><span style="color:#E1E4E8">s_cdev;</span></span>
+<span class="line"><span style="color:#F97583">static</span><span style="color:#F97583"> dev_t</span><span style="color:#E1E4E8"> dev_id;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">#define</span><span style="color:#B392F0"> S_BUFF_SIZE</span><span style="color:#79B8FF"> 4096</span></span>
+<span class="line"><span style="color:#F97583">static</span><span style="color:#F97583"> char</span><span style="color:#F97583"> *</span><span style="color:#E1E4E8">s_buf;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">#define</span><span style="color:#B392F0"> MINOR_NUMS</span><span style="color:#79B8FF"> 1</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">static</span><span style="color:#F97583"> int</span><span style="color:#B392F0"> simple_char_open</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">struct</span><span style="color:#E1E4E8"> inode </span><span style="color:#F97583">*</span><span style="color:#FFAB70">inode</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">struct</span><span style="color:#E1E4E8"> file </span><span style="color:#F97583">*</span><span style="color:#FFAB70">file</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">	pr_info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF">%s</span><span style="color:#9ECBFF">: </span><span style="color:#79B8FF">%s\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, KBUILD_MODNAME, __func__);</span></span>
+<span class="line"><span style="color:#F97583">	return</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">static</span><span style="color:#F97583"> ssize_t</span><span style="color:#B392F0"> simple_char_read</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">struct</span><span style="color:#E1E4E8"> file </span><span style="color:#F97583">*</span><span style="color:#FFAB70">file</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">char</span><span style="color:#E1E4E8"> __user </span><span style="color:#F97583">*</span><span style="color:#FFAB70">buffer</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#F97583">				size_t</span><span style="color:#FFAB70"> count</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">loff_t</span><span style="color:#F97583"> *</span><span style="color:#FFAB70">ppos</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">	int</span><span style="color:#E1E4E8"> n_bytes;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">	pr_info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF">%s</span><span style="color:#9ECBFF">: </span><span style="color:#79B8FF">%s</span><span style="color:#9ECBFF"> about to read </span><span style="color:#79B8FF">%ld</span><span style="color:#9ECBFF"> bytes from buffer position </span><span style="color:#79B8FF">%lld\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">		KBUILD_MODNAME, __func__, count, </span><span style="color:#F97583">*</span><span style="color:#E1E4E8">ppos);</span></span>
+<span class="line"><span style="color:#E1E4E8">	n_bytes </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> count </span><span style="color:#F97583">-</span><span style="color:#B392F0"> copy_to_user</span><span style="color:#E1E4E8">(buffer, s_buf </span><span style="color:#F97583">+</span><span style="color:#F97583"> *</span><span style="color:#E1E4E8">ppos, count);</span></span>
+<span class="line"><span style="color:#F97583">	*</span><span style="color:#E1E4E8">ppos </span><span style="color:#F97583">+=</span><span style="color:#E1E4E8"> n_bytes;</span></span>
+<span class="line"><span style="color:#F97583">	return</span><span style="color:#E1E4E8"> n_bytes;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">static</span><span style="color:#F97583"> ssize_t</span><span style="color:#B392F0"> simple_char_write</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">struct</span><span style="color:#E1E4E8"> file </span><span style="color:#F97583">*</span><span style="color:#FFAB70">file</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#F97583"> char</span><span style="color:#E1E4E8"> __user </span><span style="color:#F97583">*</span><span style="color:#FFAB70">buffer</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#F97583">				size_t</span><span style="color:#FFAB70"> count</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">loff_t</span><span style="color:#F97583"> *</span><span style="color:#FFAB70">ppos</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">	int</span><span style="color:#E1E4E8"> n_bytes;</span></span>
+<span class="line"><span style="color:#B392F0">	pr_info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF">%s</span><span style="color:#9ECBFF">: </span><span style="color:#79B8FF">%s</span><span style="color:#9ECBFF"> about to write </span><span style="color:#79B8FF">%ld</span><span style="color:#9ECBFF"> bytes to buffer position </span><span style="color:#79B8FF">%lld\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">		KBUILD_MODNAME, __func__, count, </span><span style="color:#F97583">*</span><span style="color:#E1E4E8">ppos);</span></span>
+<span class="line"><span style="color:#E1E4E8">	n_bytes </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> count </span><span style="color:#F97583">-</span><span style="color:#B392F0"> copy_from_user</span><span style="color:#E1E4E8">(s_buf </span><span style="color:#F97583">+</span><span style="color:#F97583"> *</span><span style="color:#E1E4E8">ppos, buffer, count);</span></span>
+<span class="line"><span style="color:#F97583">	return</span><span style="color:#E1E4E8"> n_bytes;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">static</span><span style="color:#F97583"> int</span><span style="color:#B392F0"> simple_char_release</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">struct</span><span style="color:#E1E4E8"> inode </span><span style="color:#F97583">*</span><span style="color:#FFAB70">inode</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">struct</span><span style="color:#E1E4E8"> file </span><span style="color:#F97583">*</span><span style="color:#FFAB70">file</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">	pr_info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF">%s</span><span style="color:#9ECBFF">: </span><span style="color:#79B8FF">%s\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, KBUILD_MODNAME, __func__);</span></span>
+<span class="line"><span style="color:#F97583">	return</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">static</span><span style="color:#F97583"> const</span><span style="color:#F97583"> struct</span><span style="color:#E1E4E8"> file_operations simple_char_fops </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">	.owner </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> THIS_MODULE,</span></span>
+<span class="line"><span style="color:#E1E4E8">	.open </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> simple_char_open,</span></span>
+<span class="line"><span style="color:#E1E4E8">	.release </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> simple_char_release,</span></span>
+<span class="line"><span style="color:#E1E4E8">	.read </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> simple_char_read,</span></span>
+<span class="line"><span style="color:#E1E4E8">	.write </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> simple_char_write,</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">static</span><span style="color:#F97583"> int</span><span style="color:#E1E4E8"> __init </span><span style="color:#B392F0">simple_char_init</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">void</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">	int</span><span style="color:#E1E4E8"> ret;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">	pr_info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Initialize </span><span style="color:#79B8FF">%s</span><span style="color:#9ECBFF"> module.</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, KBUILD_MODNAME);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">	/* Allocate an internal buffer for reads and writes. */</span></span>
+<span class="line"><span style="color:#E1E4E8">	s_buf </span><span style="color:#F97583">=</span><span style="color:#B392F0"> kmalloc</span><span style="color:#E1E4E8">(S_BUFF_SIZE, GFP_KERNEL);</span></span>
+<span class="line"><span style="color:#F97583">	if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">s_buf)</span></span>
+<span class="line"><span style="color:#F97583">		return</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">ENOMEM;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">	strcpy</span><span style="color:#E1E4E8">(s_buf, </span><span style="color:#9ECBFF">"This is data from simple_char buffer."</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">	/* Dynamically allocate character device device numbers. */</span></span>
+<span class="line"><span style="color:#6A737D">	/* The name passed here will appear in /proc/devices. */</span></span>
+<span class="line"><span style="color:#E1E4E8">	ret </span><span style="color:#F97583">=</span><span style="color:#B392F0"> alloc_chrdev_region</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8">dev_id, </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">, MINOR_NUMS, </span><span style="color:#9ECBFF">"simple_char"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">	if</span><span style="color:#E1E4E8"> (ret </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">		return</span><span style="color:#E1E4E8"> ret;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">	/* Allocate and initialize the character device cdev structure */</span></span>
+<span class="line"><span style="color:#E1E4E8">	s_cdev </span><span style="color:#F97583">=</span><span style="color:#B392F0"> cdev_alloc</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">	s_cdev->ops </span><span style="color:#F97583">=</span><span style="color:#F97583"> &#x26;</span><span style="color:#E1E4E8">simple_char_fops;</span></span>
+<span class="line"><span style="color:#E1E4E8">	s_cdev->owner </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> simple_char_fops.owner;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">	/* Adds a mapping for the device ID into the system. */</span></span>
+<span class="line"><span style="color:#F97583">	return</span><span style="color:#B392F0"> cdev_add</span><span style="color:#E1E4E8">(s_cdev, dev_id, MINOR_NUMS);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">static</span><span style="color:#F97583"> void</span><span style="color:#E1E4E8"> __exit </span><span style="color:#B392F0">simple_char_exit</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">void</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#6A737D">	/*</span></span>
+<span class="line"><span style="color:#6A737D">	 * Undoes the device ID mapping and frees cdev struct, removing the</span></span>
+<span class="line"><span style="color:#6A737D">	 * character device from the system.</span></span>
+<span class="line"><span style="color:#6A737D">	 */</span></span>
+<span class="line"><span style="color:#B392F0">	cdev_del</span><span style="color:#E1E4E8">(s_cdev);</span></span>
+<span class="line"><span style="color:#6A737D">	/* Unregisters (disassociate) the device numbers allocated. */</span></span>
+<span class="line"><span style="color:#B392F0">	unregister_chrdev_region</span><span style="color:#E1E4E8">(dev_id, MINOR_NUMS);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">	kfree</span><span style="color:#E1E4E8">(s_buf);</span></span>
+<span class="line"><span style="color:#B392F0">	pr_info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF">%s</span><span style="color:#9ECBFF"> exiting.</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, KBUILD_MODNAME);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">module_init</span><span style="color:#E1E4E8">(simple_char_init);</span></span>
+<span class="line"><span style="color:#B392F0">module_exit</span><span style="color:#E1E4E8">(simple_char_exit);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">MODULE_AUTHOR</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"A Linux kernel student &#x3C;my email>"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">MODULE_DESCRIPTION</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"A simple character device driver example."</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">MODULE_LICENSE</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"GPL"</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>And I added the configuration for the module like in the previous tutorial:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#6A737D"># ${IIO_TREE}/drivers/char/Kconfig</span></span>
+<span class="line"><span style="color:#B392F0">config</span><span style="color:#9ECBFF"> SIMPLE_CHAR</span></span>
+<span class="line"><span style="color:#B392F0">       tristate</span><span style="color:#9ECBFF"> "Simple character driver example"</span></span>
+<span class="line"><span style="color:#B392F0">       default</span><span style="color:#9ECBFF"> m</span></span>
+<span class="line"><span style="color:#B392F0">       help</span></span>
+<span class="line"><span style="color:#B392F0">         This</span><span style="color:#9ECBFF"> option</span><span style="color:#9ECBFF"> enables</span><span style="color:#9ECBFF"> a</span><span style="color:#9ECBFF"> simple</span><span style="color:#9ECBFF"> character</span><span style="color:#9ECBFF"> driver</span><span style="color:#9ECBFF"> that</span><span style="color:#9ECBFF"> implements</span><span style="color:#9ECBFF"> basic</span></span>
+<span class="line"><span style="color:#B392F0">         file</span><span style="color:#9ECBFF"> access</span><span style="color:#9ECBFF"> operations.</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="makefile"><code><span class="line"><span style="color:#6A737D"># ${IIO_TREE}/drivers/char/Makefile</span></span>
+<span class="line"><span style="color:#E1E4E8">obj-</span><span style="color:#9ECBFF">$(</span><span style="color:#E1E4E8">CONFIG_SIMPLE_CHAR</span><span style="color:#9ECBFF">)</span><span style="color:#E1E4E8">      += simple_char.o</span></span></code></pre>
+<p>Then, I configured this new module with <code>make olddefconfig</code> and built it with <code>make -j4 clean; make -j4 Image.gz modules</code>. As always, this compilation took a lot of time.</p>
+<h2 id="testing-the-new-driver">Testing the new driver</h2>
+<p>With the new image compiled, I tested the new driver inside the VM.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>root@localhost:~# modprobe simple_char</span></span>
+<span class="line"><span>root@localhost:~# cat /proc/devices | grep simp</span></span>
+<span class="line"><span>239 simple_char</span></span>
+<span class="line"><span>root@localhost:~# mknod simple_char_node c 239 0</span></span>
+<span class="line"><span>root@localhost:~# stat simple_char_node</span></span>
+<span class="line"><span>  File: simple_char_node</span></span>
+<span class="line"><span>  Size: 0         	Blocks: 0          IO Block: 4096   character special file</span></span>
+<span class="line"><span>Device: 254,2	Inode: 29501       Links: 1     Device type: 239,0</span></span>
+<span class="line"><span>Access: (0644/crw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)</span></span>
+<span class="line"><span>Access: 2025-03-29 15:23:30.665155951 +0000</span></span>
+<span class="line"><span>Modify: 2025-03-29 15:23:30.665155951 +0000</span></span>
+<span class="line"><span>Change: 2025-03-29 15:23:30.665155951 +0000</span></span>
+<span class="line"><span>Birth: 2025-03-29 15:23:30.665155951 +0000</span></span></code></pre>
+<blockquote>
+<p>The <code>mknod NAME TYPE MAJOR MINOR</code> command is responsible for creating a special file <code>FILE</code> of <code>TYPE</code> with <code>MAJOR</code> and <code>MINOR</code> number. In our case, it’s creating a <code>simple_char_node</code> file of type <code>c</code>, which is a character (unbuffered) special file, and a major number <code>239</code> and minor number <code>0</code>.</p>
+</blockquote>
+<p>Then I created a <code>read_prog.c</code> program to test reading from this character device.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#F97583">#include</span><span style="color:#9ECBFF"> &#x3C;stdio.h></span></span>
+<span class="line"><span style="color:#F97583">#include</span><span style="color:#9ECBFF"> &#x3C;fcntl.h></span></span>
+<span class="line"><span style="color:#F97583">#include</span><span style="color:#9ECBFF"> &#x3C;unistd.h></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">#define</span><span style="color:#B392F0"> BUF_SIZE</span><span style="color:#79B8FF"> 256</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/* Example inspired from open(2) */</span></span>
+<span class="line"><span style="color:#F97583">int</span><span style="color:#B392F0"> main</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#FFAB70"> argc</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#F97583"> char</span><span style="color:#F97583"> **</span><span style="color:#FFAB70">argv</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">	char</span><span style="color:#FFAB70"> buf</span><span style="color:#E1E4E8">[BUF_SIZE];</span></span>
+<span class="line"><span style="color:#F97583">	int</span><span style="color:#E1E4E8"> fd;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">	if</span><span style="color:#E1E4E8"> (argc </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">		return</span><span style="color:#F97583"> -</span><span style="color:#79B8FF">22</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">	fd </span><span style="color:#F97583">=</span><span style="color:#B392F0"> open</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">argv</span><span style="color:#E1E4E8">[</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">], O_RDONLY);</span></span>
+<span class="line"><span style="color:#B392F0">	read</span><span style="color:#E1E4E8">(fd, buf, BUF_SIZE);</span></span>
+<span class="line"><span style="color:#B392F0">	printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Read buffer: </span><span style="color:#79B8FF">%s\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, buf);</span></span>
+<span class="line"><span style="color:#B392F0">	close</span><span style="color:#E1E4E8">(fd);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>By compiling it with <code>aarch64-linux-gnu-gcc</code> and sending it to the VM, we could test it:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>root@localhost:~# ./read_prog simple_char_node </span></span>
+<span class="line"><span>Read buffer: This is data from simple_char buffer.</span></span></code></pre>
+<p>After that, I created a program to write to the device.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#F97583">#include</span><span style="color:#9ECBFF"> &#x3C;stdio.h></span></span>
+<span class="line"><span style="color:#F97583">#include</span><span style="color:#9ECBFF"> &#x3C;fcntl.h></span></span>
+<span class="line"><span style="color:#F97583">#include</span><span style="color:#9ECBFF"> &#x3C;unistd.h></span></span>
+<span class="line"><span style="color:#F97583">#include</span><span style="color:#9ECBFF"> &#x3C;errno.h></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">#define</span><span style="color:#B392F0"> BUF_SIZE</span><span style="color:#79B8FF"> 256</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">int</span><span style="color:#B392F0"> main</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#FFAB70"> argc</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">const</span><span style="color:#F97583"> char</span><span style="color:#F97583"> **</span><span style="color:#FFAB70">argv</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">	char</span><span style="color:#FFAB70"> buf</span><span style="color:#E1E4E8">[BUF_SIZE];</span></span>
+<span class="line"><span style="color:#F97583">	int</span><span style="color:#E1E4E8"> errsv;</span></span>
+<span class="line"><span style="color:#F97583">	int</span><span style="color:#E1E4E8"> ret;</span></span>
+<span class="line"><span style="color:#F97583">	int</span><span style="color:#E1E4E8"> fd;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">	if</span><span style="color:#E1E4E8"> (argc </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">		return</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">EINVAL;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">	sprintf</span><span style="color:#E1E4E8">(buf, </span><span style="color:#9ECBFF">"A new message for simple_char."</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">	fd </span><span style="color:#F97583">=</span><span style="color:#B392F0"> open</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">argv</span><span style="color:#E1E4E8">[</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">], O_RDWR);</span></span>
+<span class="line"><span style="color:#E1E4E8">	ret </span><span style="color:#F97583">=</span><span style="color:#B392F0"> write</span><span style="color:#E1E4E8">(fd, buf, BUF_SIZE);</span></span>
+<span class="line"><span style="color:#F97583">	if</span><span style="color:#E1E4E8"> (ret </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">		errsv </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> errno;</span></span>
+<span class="line"><span style="color:#B392F0">		printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Error: </span><span style="color:#79B8FF">%d</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, errsv);</span></span>
+<span class="line"><span style="color:#E1E4E8">	}</span></span>
+<span class="line"><span style="color:#B392F0">	printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"wrote </span><span style="color:#79B8FF">%d</span><span style="color:#9ECBFF"> bytes to buffer</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, ret);</span></span>
+<span class="line"><span style="color:#F97583">	return</span><span style="color:#B392F0"> close</span><span style="color:#E1E4E8">(fd);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>By compiling it and sending it to the VM, I could test it:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>root@localhost:~# ./write_prog  simple_char_node </span></span>
+<span class="line"><span>wrote 256 bytes to buffer</span></span>
+<span class="line"><span>root@localhost:~# ./read_prog simple_char_node </span></span>
+<span class="line"><span>Read buffer: A new message for simple_char.</span></span></code></pre>
+<p>And that’s the logs for it.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[   99.901129] Initialize simple_char module.</span></span>
+<span class="line"><span>[ 1039.965854] simple_char: simple_char_open</span></span>
+<span class="line"><span>[ 1039.966109] simple_char: simple_char_read about to read 256 bytes from buffer position 0</span></span>
+<span class="line"><span>[ 1039.971482] simple_char: simple_char_release</span></span>
+<span class="line"><span>[ 1193.785469] simple_char: simple_char_open</span></span>
+<span class="line"><span>[ 1193.785760] simple_char: simple_char_write about to write 256 bytes to buffer position 0</span></span>
+<span class="line"><span>[ 1193.792990] simple_char: simple_char_release</span></span>
+<span class="line"><span>[ 1198.051454] simple_char: simple_char_open</span></span>
+<span class="line"><span>[ 1198.051664] simple_char: simple_char_read about to read 256 bytes from buffer position 0</span></span>
+<span class="line"><span>[ 1198.063498] simple_char: simple_char_release</span></span></code></pre>  </div> </article> </main> <footer data-astro-cid-sz7xmlte> <a href="https://andrewijano.github.io" data-astro-cid-sz7xmlte>andrewijano.github.io</a> &copy; 2025 by Andrew Ijano is licensed under <a href="https://creativecommons.org/licenses/by/4.0/" data-astro-cid-sz7xmlte>CC BY 4.0</a>.
+</footer>  </body></html>
