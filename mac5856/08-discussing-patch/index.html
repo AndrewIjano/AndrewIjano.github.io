@@ -1,0 +1,245 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-bvzihdzo> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="Andrew Ijano" href="https://example.com/rss.xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css"><meta name="generator" content="Astro v5.4.1"><!-- Canonical URL --><link rel="canonical" href="https://example.com/mac5856/08-discussing-patch/"><!-- Primary Meta Tags --><title>[Linux] Discussing the patch</title><meta name="title" content="[Linux] Discussing the patch"><meta name="description" content="This report shows how we worked on discussions for the patch to the Linux kernel"><style>:root{--accent: #ccc;--accent-lighter: white;--background: #030303;--background-code: #24292e;--black: 15, 18, 25;--gray: 96, 115, 159;--gray-light: 229, 233, 240;--gray-dark: 34, 41, 57;--gray-gradient: rgba(var(--gray-light), 50%), #fff;--box-shadow: 0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%), 0 16px 32px rgba(var(--gray), 33%)}*{font-family:Hack,monospace;margin:0;padding:0}body{padding:1em 2em;text-align:left;word-wrap:break-word;overflow-wrap:break-word;color:var(--accent);background-color:var(--background);font-size:.93em;letter-spacing:-.02em;line-height:1.5;font-weight:400;text-rendering:"optimizeLegibility"}main{max-width:calc(100% - 2em);padding:2em 0}h1,h2,h3,h4,h5,h6{margin-top:2.5em;line-height:1.2;color:var(--accent-lighter);font-weight:bolder}.prose h1,h2,h3,h4,h5,h6{margin-bottom:-.6em}h1{font-size:1.2em}h2,h3,h4,h5,h6{font-size:1.1em}strong,b{font-weight:700}a{color:var(--accent);text-decoration:"underline"}a:hover{color:var(--accent-lighter)}.prose p{margin-top:1.6em;color:(--accent)}textarea{width:100%;font-size:16px}input{font-size:1em}table{width:100%}img{max-width:100%;height:auto;border-radius:8px}code{padding:2px 5px;border-radius:2px;font-size:.9em;background-color:var(--background-code);color:var(--accent-lighter)}pre{padding:1.5em;border-radius:8px;margin-top:.5em;margin-bottom:2em}pre>code{all:unset;font-size:.8em}blockquote{border-left:2px solid var(--accent);padding:0 0 0 20px;margin:2em 0}hr{border:none}ul{margin-top:.5em;margin-left:1em}ol{margin-top:.5em;margin-left:2em}li{margin:.5em 0}@media (min-width: 720px){body{font-size:1em;padding:1em 5em}main{padding:1em;width:720px}}.sr-only{border:0;padding:0;margin:0;position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px 1px 1px 1px);clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}a[data-astro-cid-eimmu3lg]{display:inline-block;color:var(--accent)}a[data-astro-cid-eimmu3lg]:hover{color:var(--accent-lighter)}.active[data-astro-cid-eimmu3lg]{font-weight:bolder;color:var(--accent-lighter)}header[data-astro-cid-3ef6ksr2]{margin:0;width:100%}h2[data-astro-cid-3ef6ksr2]{margin:0;font-size:1em}nav[data-astro-cid-3ef6ksr2]{display:flex;align-items:center;justify-content:space-between}nav[data-astro-cid-3ef6ksr2] div[data-astro-cid-3ef6ksr2]{display:flex;gap:1em}nav[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{border-bottom:2px solid transparent;text-decoration:none}.active[data-astro-cid-3ef6ksr2]{border-bottom:2px solid transparent;border-bottom-color:var(--accent)}.social-links[data-astro-cid-3ef6ksr2],.social-links[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{display:flex}.site-title[data-astro-cid-3ef6ksr2]{color:#fff}@media (max-width: 720px){.social-links[data-astro-cid-3ef6ksr2]{display:none}}
+footer[data-astro-cid-sz7xmlte]{padding:2em 1em 6em;color:var(--accent);font-size:.8em;text-align:center}.social-links[data-astro-cid-sz7xmlte]{display:flex;justify-content:center;gap:1em;margin-top:1em}.social-links[data-astro-cid-sz7xmlte] a[data-astro-cid-sz7xmlte]{text-decoration:none;color:rgb(var(--gray))}.social-links[data-astro-cid-sz7xmlte] a[data-astro-cid-sz7xmlte]:hover{color:rgb(var(--gray-dark))}body{display:flex;flex-direction:column;align-items:center}main[data-astro-cid-bvzihdzo]{max-width:100%;margin:0}.hero-image[data-astro-cid-bvzihdzo]{width:100%}.hero-image[data-astro-cid-bvzihdzo] img[data-astro-cid-bvzihdzo]{display:block;margin:0 auto;border-radius:12px;box-shadow:var(--box-shadow)}.prose[data-astro-cid-bvzihdzo]{margin:auto;color:var(--accent)}.title[data-astro-cid-bvzihdzo]{margin-bottom:1em;padding:1em 0;text-align:center;line-height:1}.title[data-astro-cid-bvzihdzo] h1[data-astro-cid-bvzihdzo]{margin:0 0 .5em;color:var(--accent-lighter)}.date[data-astro-cid-bvzihdzo]{margin-bottom:.5em;color:rgb(var(--accent))}.last-updated-on[data-astro-cid-bvzihdzo]{font-style:italic}@media (min-width: 680px){.prose[data-astro-cid-bvzihdzo]{width:680px;max-width:calc(100% - 2em)}}
+</style></head> <body data-astro-cid-bvzihdzo> <header data-astro-cid-3ef6ksr2> <nav data-astro-cid-3ef6ksr2> <a class="site-title" href="/" data-astro-cid-3ef6ksr2>Andrew Ijano</a> <div class="internal-links" data-astro-cid-3ef6ksr2> <a href="/" data-astro-cid-3ef6ksr2="true" data-astro-cid-eimmu3lg> /home </a>  <a href="/mac5856" class="active" data-astro-cid-3ef6ksr2="true" data-astro-cid-eimmu3lg> /mac5856 </a>  </div> </nav> </header>  <main data-astro-cid-bvzihdzo> <article data-astro-cid-bvzihdzo> <div class="prose" data-astro-cid-bvzihdzo> <div class="title" data-astro-cid-bvzihdzo> <div class="date" data-astro-cid-bvzihdzo> <time datetime="2025-05-07T03:00:00.000Z"> 2025-05-07 </time> </div> <h1 data-astro-cid-bvzihdzo>[Linux] Discussing the patch</h1> <hr data-astro-cid-bvzihdzo> </div>  <p>After the sending the patch to the maintainers, we started discussing with the maintainers and working on their suggestions.</p>
+<h2 id="patch-v1-the-original-proposal">[PATCH v1]: the original proposal</h2>
+<p>For the first version of our patch, we received a very short review from Andy, one of the reviewers.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="diff"><code><span class="line"><span style="color:#85E89D">> Remove duplicated code between sca3000_read_data and</span></span>
+<span class="line"><span style="color:#85E89D">> sca3000_read_data_short functions.</span></span>
+<span class="line"><span style="color:#85E89D">></span></span>
+<span class="line"><span style="color:#85E89D">> The common behavior is centralized in just one sca3000_read_data</span></span>
+<span class="line"><span style="color:#85E89D">> function and used for every case.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">We refer to the functions as func() (mind the parentheses).</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">...</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">> +       ret = spi_sync_transfer(st->us, xfer, ARRAY_SIZE(xfer));</span></span>
+<span class="line"><span style="color:#85E89D">> +       if (ret) {</span></span>
+<span class="line"><span style="color:#85E89D">> +               dev_err(&#x26;st->us->dev, "problem reading register\n");</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">> +               return ret;</span></span>
+<span class="line"><span style="color:#85E89D">> +       }</span></span>
+<span class="line"><span style="color:#85E89D">></span></span>
+<span class="line"><span style="color:#85E89D">> -       return spi_sync_transfer(st->us, xfer, ARRAY_SIZE(xfer));</span></span>
+<span class="line"><span style="color:#85E89D">> +       return 0;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">Simply return ret instead of 4 LoCs we get only one.</span></span></code></pre>
+<p>After responding to it, we worked on creating a new version with the changes.</p>
+<h2 id="patch-v2-a-cleaner-version">[PATCH v2]: a cleaner version</h2>
+<p>For this version, Jonathan, the maintainer, sent a review saying that the function we were trying to improve shouldn’t be used at all and could be replaced by functions like <code>spi_w8r8()</code>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Look at the helpers that exist for spi sequences like this.</span></span>
+<span class="line"><span>This is an old driver so may not be making full use of newer infrastructure.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>In particular a lot of these can probably become spi_w8r8()and</span></span>
+<span class="line"><span>it may make sense to move the SCA3000_READ_REG() to the callers to avoid the</span></span>
+<span class="line"><span>need for these helpers at all.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Note that is not an appropriate change for the large reads though as</span></span>
+<span class="line"><span>spi_write_then_read() bounces all buffers and so would add a copy</span></span>
+<span class="line"><span>to those high(ish) performance paths.</span></span></code></pre>
+<p>We had to fully imerse in how these operations worked and make the appropriate changes.</p>
+<h2 id="patch-v3-changing-the-scope">[PATCH v3]: changing the scope</h2>
+<p>After the suggestions, we submitted a new version that changed every case of a 1 byte read to a <code>spi_w8r8()</code>, 2 byte read to <code>spi_w8r16()</code> and the only case that used larger buffers remained with the internal function. This is one example of the change.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="diff"><code><span class="line"><span style="color:#B392F0;font-weight:bold">@@ -412,10 +416,11 @@</span><span style="color:#E1E4E8"> static int sca3000_read_ctrl_reg(struct sca3000_state *st,</span></span>
+<span class="line"><span style="color:#E1E4E8">        ret = sca3000_write_reg(st, SCA3000_REG_CTRL_SEL_ADDR, ctrl_reg);</span></span>
+<span class="line"><span style="color:#E1E4E8">        if (ret)</span></span>
+<span class="line"><span style="color:#E1E4E8">                goto error_ret;</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>       ret = sca3000_read_data_short(st, SCA3000_REG_CTRL_DATA_ADDR, 1);</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span></span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span>       ret = spi_w8r8(st->us, SCA3000_READ_REG(SCA3000_REG_CTRL_DATA_ADDR));</span></span>
+<span class="line"><span style="color:#E1E4E8">        if (ret)</span></span>
+<span class="line"><span style="color:#E1E4E8">                goto error_ret;</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>       return st->rx[0];</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span>       return ret;</span></span>
+<span class="line"><span style="color:#E1E4E8"> error_ret:</span></span>
+<span class="line"><span style="color:#E1E4E8">        return ret;</span></span>
+<span class="line"><span style="color:#E1E4E8"> }</span></span></code></pre>
+<p>We then received several comments from Andy, like the following.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="diff"><code><span class="line"><span style="color:#E1E4E8">Suggested-by: ? (IIRC Jonathan suggested this, but ignore if I am mistaken)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">...</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>                       *val = sign_extend32(be16_to_cpup((__be16 *)st->rx) >></span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span>                       *val = sign_extend32(be16_to_cpu((__be16) ret) >></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">This doesn't look good, can you define a proper __be16 variable on</span></span>
+<span class="line"><span style="color:#E1E4E8">stack and use it instead of ret?</span></span></code></pre>
+<h2 id="patch-v4-cleaning-it-even-more">[PATCH v4]: cleaning it even more</h2>
+<p>This one wasn’t received so well. I forgot to CC every stakeholder in the response and forgot to reply to <em>every</em> comment from Andy, so it seemed that I just ignored his suggestions.</p>
+<p>In the end, Johnathan made several suggestions, like using functions like <code>spi_w8r16be()</code> to solve problems mentioned by Andy, better sorting changes and using other functions to clean up the code.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>This shows the age of the code.  Just return in error paths above rather</span></span>
+<span class="line"><span>than a error_ret: label</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Might be a good idea to do a precursor patch tidying up any cases of this</span></span>
+<span class="line"><span>before the one doin gthe spi changes in ehre.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>> @@ -432,13 +434,13 @@ static int sca3000_print_rev(struct iio_dev *indio_dev)</span></span>
+<span class="line"><span>>       struct sca3000_state *st = iio_priv(indio_dev);</span></span>
+<span class="line"><span>> </span></span>
+<span class="line"><span>>       mutex_lock(&#x26;st->lock);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Another patch to use guard(mutex)(&#x26;st->lock); etc would be help clean this</span></span>
+<span class="line"><span>up by allowing direct return in the error path.</span></span></code></pre>
+<p>Beacause of this, we agreed on breaking this change up in a patch set of three changes:</p>
+<ol>
+<li>One patch for general style changes, like the removal of error_ret labels;</li>
+<li>Another patch for spi changes;</li>
+<li>And another one for using <code>guard(mutex)(&#x26;st->lock)</code>.</li>
+</ol>
+<h2 id="patch-v5-13-removing-gotos">[PATCH v5 1/3]: removing gotos</h2>
+<p>The first patch was focused on general style changes, like this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="diff"><code><span class="line"><span style="color:#B392F0;font-weight:bold">@@ -577,7 +572,8 @@</span><span style="color:#E1E4E8"> static inline int __sca3000_get_base_freq(struct sca3000_state *st,</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">        ret = sca3000_read_data_short(st, SCA3000_REG_MODE_ADDR, 1);</span></span>
+<span class="line"><span style="color:#E1E4E8">        if (ret)</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>               goto error_ret;</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span>               return ret;</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span></span></span>
+<span class="line"><span style="color:#E1E4E8">        switch (SCA3000_REG_MODE_MODE_MASK &#x26; st->rx[0]) {</span></span>
+<span class="line"><span style="color:#E1E4E8">        case SCA3000_REG_MODE_MEAS_MODE_NORMAL:</span></span>
+<span class="line"><span style="color:#E1E4E8">                *base_freq = info->measurement_mode_freq;</span></span>
+<span class="line"><span style="color:#B392F0;font-weight:bold">@@ -591,7 +587,6 @@</span><span style="color:#E1E4E8"> static inline int __sca3000_get_base_freq(struct sca3000_state *st,</span></span>
+<span class="line"><span style="color:#E1E4E8">        default:</span></span>
+<span class="line"><span style="color:#E1E4E8">                ret = -EINVAL;</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>error_ret:</span></span>
+<span class="line"><span style="color:#E1E4E8">        return ret;</span></span>
+<span class="line"><span style="color:#E1E4E8"> }</span></span></code></pre>
+<p>This was reviewed without much discussions and was approved by Johnatan.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Andy Shevchenko &#x3C;andriy.shevchenko@linux.intel.com> wrote:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>> On Wed, Jun 11, 2025 at 04:39:19PM -0300, Andrew Ijano wrote:</span></span>
+<span class="line"><span>> > Replace usage of error_ret labels by returning directly when handling</span></span>
+<span class="line"><span>> > errors. Cases that do a mutex unlock were not changed. </span></span>
+<span class="line"><span>></span></span>
+<span class="line"><span>> Reviewed-by: Andy Shevchenko &#x3C;andriy.shevchenko@linux.intel.com></span></span>
+<span class="line"><span>Applied this patch to the togreg branch of iio.git which is</span></span>
+<span class="line"><span>initially pushed out as testing.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Thanks,</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Jonathan</span></span></code></pre>
+<h2 id="patch-v5-23-using-spi-helpers-all-the-way">[PATCH v5 2/3]: using spi helpers all the way</h2>
+<p>This was an evolution of the initial proposal but now using <code>spi_w8r16be()</code> for big endian operations.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="diff"><code><span class="line"><span style="color:#B392F0;font-weight:bold">@@ -727,25 +706,22 @@</span><span style="color:#E1E4E8"> static int sca3000_read_raw(struct iio_dev *indio_dev,</span></span>
+<span class="line"><span style="color:#E1E4E8">                                return -EBUSY;</span></span>
+<span class="line"><span style="color:#E1E4E8">                        }</span></span>
+<span class="line"><span style="color:#E1E4E8">                        address = sca3000_addresses[chan->address][0];</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>                       ret = sca3000_read_data_short(st, address, 2);</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span>                       ret = spi_w8r16be(st->us, SCA3000_READ_REG(address));</span></span>
+<span class="line"><span style="color:#E1E4E8">                        if (ret &#x3C; 0) {</span></span>
+<span class="line"><span style="color:#E1E4E8">                                mutex_unlock(&#x26;st->lock);</span></span>
+<span class="line"><span style="color:#E1E4E8">                                return ret;</span></span>
+<span class="line"><span style="color:#E1E4E8">                        }</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>                       *val = sign_extend32(be16_to_cpup((__be16 *)st->rx) >></span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>                                            chan->scan_type.shift,</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span>                       *val = sign_extend32(ret >> chan->scan_type.shift,</span></span>
+<span class="line"><span style="color:#E1E4E8">                                             chan->scan_type.realbits - 1);</span></span></code></pre>
+<p>This one had three important comments:</p>
+<ol>
+<li>Nuno pointed out that our change of <code>sca3000_read_data()</code> seemed out of place;</li>
+<li>Andy mentioned some style changes that we could make;</li>
+<li>Andy also mentioned that we should use <code>sysfs_emit_at()</code> instead of <code>sprintf()</code> for sysfs functions. I suggested making a following patch for that.</li>
+</ol>
+<h2 id="patch-v5-33-using-lock-guards">[PATCH v5 3/3]: using lock guards</h2>
+<p>For this one, we used the <code>guard()</code> for cleaning up the way we handle mutex locks in functions.</p>
+<blockquote>
+<p>As a side note, <code>guard()</code> makes use of the <code>__attribute__((cleanup()))</code>. The cleanup attribute runs a function when the variable goes out of scope.</p>
+</blockquote>
+<p>Our implementation looked like this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="diff"><code><span class="line"><span style="color:#B392F0;font-weight:bold">@@ -405,17 +405,14 @@</span><span style="color:#E1E4E8"> static int sca3000_print_rev(struct iio_dev *indio_dev)</span></span>
+<span class="line"><span style="color:#E1E4E8">        int ret;</span></span>
+<span class="line"><span style="color:#E1E4E8">        struct sca3000_state *st = iio_priv(indio_dev);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>       mutex_lock(&#x26;st->lock);</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span>       guard(mutex)(&#x26;st->lock);</span></span>
+<span class="line"><span style="color:#E1E4E8">        ret = spi_w8r8(st->us, SCA3000_READ_REG(SCA3000_REG_REVID_ADDR));</span></span>
+<span class="line"><span style="color:#E1E4E8">        if (ret &#x3C; 0)</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>               goto error_ret;</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span>               return ret;</span></span>
+<span class="line"><span style="color:#E1E4E8">        dev_info(&#x26;indio_dev->dev,</span></span>
+<span class="line"><span style="color:#E1E4E8">                 "sca3000 revision major=%lu, minor=%lu\n",</span></span>
+<span class="line"><span style="color:#E1E4E8">                 ret &#x26; SCA3000_REG_REVID_MAJOR_MASK,</span></span>
+<span class="line"><span style="color:#E1E4E8">                 ret &#x26; SCA3000_REG_REVID_MINOR_MASK);</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>error_ret:</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>       mutex_unlock(&#x26;st->lock);</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span></span></span>
+<span class="line"><span style="color:#E1E4E8">        return ret;</span></span>
+<span class="line"><span style="color:#E1E4E8"> }</span></span></code></pre>
+<p>For this, there were two main comments:</p>
+<ol>
+<li>Nuno suggested using <code>scoped_guard()</code>, since I was concerned that some placed were now locking a much larger scope than before;</li>
+<li>Nuno, David, Jonathan and even the kernel test bot pointed out the use of <code>guard()</code> inside a switch() case. The solution is just defining a local scope there like this.</li>
+</ol>
+<h2 id="patch-v6-14-cleaning-change-of-spi-helpers">[PATCH v6 1/4]: cleaning change of spi helpers</h2>
+<p>This patch fixed all remaining style changes and separated the change of <code>sca3000_read_data()</code> in a different patch.</p>
+<h2 id="patch-v6-24-cleaning-the-read-function">[PATCH v6 2/4]: cleaning the read function</h2>
+<p>This patch represents the change of <code>sca3000_read_data()</code>.</p>
+<h2 id="patch-v6-34-fixing-lock-guards-usage">[PATCH v6 3/4]: fixing lock guards usage</h2>
+<p>This patch had two main fixes:</p>
+<ul>
+<li>Fixing how we use guard inside switch() cases.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#E1E4E8">case IIO_CHAN_INFO_SAMP_FREQ: {</span></span>
+<span class="line"><span style="color:#B392F0">        guard</span><span style="color:#E1E4E8">(mutex)(</span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8">st->lock);</span></span>
+<span class="line"><span style="color:#E1E4E8">        ret </span><span style="color:#F97583">=</span><span style="color:#B392F0"> sca3000_read_raw_samp_freq</span><span style="color:#E1E4E8">(st, val);</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> ret </span><span style="color:#F97583">?</span><span style="color:#E1E4E8"> ret </span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> IIO_VAL_INT;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<ul>
+<li>Using scoped_guard() for mutex locks in a small scope</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="diff"><code><span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>       mutex_lock(&#x26;st->lock);</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>       ret = spi_w8r8(st->us, SCA3000_READ_REG(SCA3000_REG_MODE_ADDR));</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>       mutex_unlock(&#x26;st->lock);</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span>       scoped_guard(mutex, &#x26;st->lock) {</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span>               ret = spi_w8r8(st->us, SCA3000_READ_REG(SCA3000_REG_MODE_ADDR));</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span>       }</span></span></code></pre>
+<h2 id="patch-v6-44-better-handling-sysfs-operations">[PATCH v6 4/4]: better handling sysfs operations</h2>
+<p>This was a suggestion from Andy to use sysfs_emit_at() instead of sprintf() for sysfs operations as
+suggested in the documentation, since it is aware of PAGE_SIZE buffer.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="diff"><code><span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>-- a/drivers/iio/accel/sca3000.c</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span>++ b/drivers/iio/accel/sca3000.c</span></span>
+<span class="line"><span style="color:#B392F0;font-weight:bold">@@ -423,16 +423,16 @@</span><span style="color:#E1E4E8"> sca3000_show_available_3db_freqs(struct device *dev,</span></span>
+<span class="line"><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">        struct iio_dev *indio_dev = dev_to_iio_dev(dev);</span></span>
+<span class="line"><span style="color:#E1E4E8">        struct sca3000_state *st = iio_priv(indio_dev);</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>       int len;</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span>       unsigned int len = 0;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>       len = sprintf(buf, "%d", st->info->measurement_mode_3db_freq);</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span>       len = sysfs_emit_at(buf, len, "%d", st->info->measurement_mode_3db_freq);</span></span>
+<span class="line"><span style="color:#E1E4E8">        if (st->info->option_mode_1)</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>               len += sprintf(buf + len, " %d",</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span>               len += sysfs_emit_at(buf, len, " %d",</span></span>
+<span class="line"><span style="color:#E1E4E8">                               st->info->option_mode_1_3db_freq);</span></span>
+<span class="line"><span style="color:#E1E4E8">        if (st->info->option_mode_2)</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>               len += sprintf(buf + len, " %d",</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span>               len += sysfs_emit_at(buf, len, " %d",</span></span>
+<span class="line"><span style="color:#E1E4E8">                               st->info->option_mode_2_3db_freq);</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span>       len += sprintf(buf + len, "\n");</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span>       len += sysfs_emit_at(buf, len, "\n");</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">        return len;</span></span>
+<span class="line"><span style="color:#E1E4E8"> }</span></span></code></pre>
+<h2 id="conclusion">Conclusion</h2>
+<p>After all this discussions we had the following results:</p>
+<ul>
+<li>5 patches, 1 already accepted and sent to testing;</li>
+<li>411 updated lines of code (155 insertions and 256 deletions);</li>
+</ul>
+<p>This also raised important learnings:</p>
+<ul>
+<li>Using “Suggested-by:” when someone suggests a patch;</li>
+<li>Always reply to all, send changelogs and address all comments;</li>
+<li>Don’t forget to use base when sending futher patches;</li>
+<li>Don’t forget to compile and run checkpatch before sending the patch;</li>
+<li>Be patient;</li>
+</ul>
+<p>And some interesting findings for the course that could be used in future patches:</p>
+<ul>
+<li>Fixing code styles: useless gotos, extra paratheses, bad structured returns;</li>
+<li>Using spi helpers for handling small buffers (<code>spi_w8r8()</code>, <code>spi_w6r16</code>, etc);</li>
+<li>Using <code>guard(mutex)</code> for mutex locks;</li>
+<li>Using  <code>sysfs_emit()</code> or <code>sysfs_emit_at()</code> for sysfs operations.</li>
+</ul>  </div> </article> </main> <footer data-astro-cid-sz7xmlte> <a href="https://andrewijano.github.io" data-astro-cid-sz7xmlte>andrewijano.github.io</a> &copy; 2025 by Andrew Ijano is licensed under <a href="https://creativecommons.org/licenses/by/4.0/" data-astro-cid-sz7xmlte>CC BY 4.0</a>.
+</footer>  </body></html>
